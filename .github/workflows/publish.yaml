@@ -50,8 +50,8 @@ jobs:
       - uses: docker/build-push-action@v6
         if: steps.version.outputs.skip != 'true'
         with:
-          push: true
           provenance: false
+          outputs: type=image,push=true,oci-mediatypes=true
           build-args: VERSION=${{ steps.version.outputs.version }}
           tags: ghcr.io/${{ github.repository }}:${{ steps.version.outputs.version }}
           labels: |
